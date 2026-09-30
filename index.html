@@ -417,6 +417,46 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
   .shuffle{margin-left:0}
 }
 </style>
+
+<style>
+/* Feedback al pasar el mouse: se aplica a todo boton/elemento clicable de
+   la pagina (los toggles de "En accion" y "Reglas", los temas y el shuffle
+   del Font Lab, los botones de la Firma y el "Descargar SVG" del Logo).
+   .sw (paleta) y .top nav a ya tenian su propio hover, no se tocan. */
+.theme-btn,.shuffle,.rb,.seg button,.btn,.fbtn,.dlbtn{
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+.theme-btn:hover,.shuffle:hover,.rb:hover,.seg button:hover,.btn:hover,.fbtn:hover,.dlbtn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(1,0,1,.16);
+  filter:brightness(1.04);
+}
+.theme-btn:active,.shuffle:active,.rb:active,.seg button:active,.btn:active,.fbtn:active,.dlbtn:active{
+  transform:translateY(0);
+  box-shadow:0 3px 8px rgba(1,0,1,.14);
+  filter:none;
+}
+.swdot,#firma-bgtoggle button{
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.swdot:hover,#firma-bgtoggle button:hover{
+  transform:scale(1.18);
+  box-shadow:0 4px 10px rgba(1,0,1,.28);
+}
+.swdot:active,#firma-bgtoggle button:active{
+  transform:scale(1.02);
+}
+.fpreset{
+  transition:transform .18s ease,box-shadow .18s ease,border-color .15s ease;
+}
+.fpreset:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 18px rgba(1,0,1,.14);
+}
+.fpreset:active{
+  transform:translateY(-1px);
+}
+</style>
 </head>
 <body>
 
@@ -997,7 +1037,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
           <div><b>Punto</b> &nbsp;Cuero #864C24</div>
           <div><b>UGC Creator</b> &nbsp;Eggshell #E9E2D0</div>
         </div>
-        <a href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iNzYuMCIgdmlld0JveD0iMCAwIDI1NiA3NiIgZmlsbD0ibm9uZSI+PHRleHQgeD0iMCIgeT0iNTgiIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9Ijc2IiBsZXR0ZXItc3BhY2luZz0iLTMuNDIiIGZpbGw9IiNFOUUyRDAiPmFuZHk8L3RleHQ+PGNpcmNsZSBjeD0iMTc3IiBjeT0iMjkiIHI9IjcuNSIgZmlsbD0iIzg2NEMyNCI+PC9jaXJjbGU+PHRleHQgeD0iMTg4IiB5PSIyNS41IiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiNFOUUyRDAiPlVHQzwvdGV4dD48dGV4dCB4PSIxODgiIHk9IjQyIiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiNFOUUyRDAiPkNSRUFUT1I8L3RleHQ+PC9zdmc+" download="andy-indigo.svg" style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#E9E2D0;color:#1F2C44;border-radius:999px;padding:8px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px">&#8595; Descargar SVG</a>
+        <a href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iNzYuMCIgdmlld0JveD0iMCAwIDI1NiA3NiIgZmlsbD0ibm9uZSI+PHRleHQgeD0iMCIgeT0iNTgiIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9Ijc2IiBsZXR0ZXItc3BhY2luZz0iLTMuNDIiIGZpbGw9IiNFOUUyRDAiPmFuZHk8L3RleHQ+PGNpcmNsZSBjeD0iMTc3IiBjeT0iMjkiIHI9IjcuNSIgZmlsbD0iIzg2NEMyNCI+PC9jaXJjbGU+PHRleHQgeD0iMTg4IiB5PSIyNS41IiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiNFOUUyRDAiPlVHQzwvdGV4dD48dGV4dCB4PSIxODgiIHk9IjQyIiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiNFOUUyRDAiPkNSRUFUT1I8L3RleHQ+PC9zdmc+" download="andy-indigo.svg" class="dlbtn" style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#E9E2D0;color:#1F2C44;border-radius:999px;padding:8px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px">&#8595; Descargar SVG</a>
       </div>
       <div style="background:#FFFFFF;border-radius:16px;padding:28px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:22px;border:1px solid rgba(1,0,1,.1)">
         <svg xmlns="http://www.w3.org/2000/svg" width="180" height="53.4" viewBox="0 0 256 76" fill="none"><text x="0" y="58" font-family="Archivo, Helvetica, Arial, sans-serif" font-weight="700" font-size="76" letter-spacing="-3.42" fill="#1F2C44">andy</text><circle cx="177" cy="29" r="7.5" fill="#864C24"></circle><text x="188" y="25.5" font-family="DM Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.84" fill="#51091B">UGC</text><text x="188" y="42" font-family="DM Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.84" fill="#51091B">CREATOR</text></svg>
@@ -1007,7 +1047,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
           <div><b>Punto</b> &nbsp;Cuero #864C24</div>
           <div><b>UGC Creator</b> &nbsp;Bordó #51091B</div>
         </div>
-        <a href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iNzYuMCIgdmlld0JveD0iMCAwIDI1NiA3NiIgZmlsbD0ibm9uZSI+PHRleHQgeD0iMCIgeT0iNTgiIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9Ijc2IiBsZXR0ZXItc3BhY2luZz0iLTMuNDIiIGZpbGw9IiMxRjJDNDQiPmFuZHk8L3RleHQ+PGNpcmNsZSBjeD0iMTc3IiBjeT0iMjkiIHI9IjcuNSIgZmlsbD0iIzg2NEMyNCI+PC9jaXJjbGU+PHRleHQgeD0iMTg4IiB5PSIyNS41IiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiM1MTA5MUIiPlVHQzwvdGV4dD48dGV4dCB4PSIxODgiIHk9IjQyIiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiM1MTA5MUIiPkNSRUFUT1I8L3RleHQ+PC9zdmc+" download="andy-blanco.svg" style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#1F2C44;color:#FFFFFF;border-radius:999px;padding:8px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px">&#8595; Descargar SVG</a>
+        <a href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iNzYuMCIgdmlld0JveD0iMCAwIDI1NiA3NiIgZmlsbD0ibm9uZSI+PHRleHQgeD0iMCIgeT0iNTgiIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9Ijc2IiBsZXR0ZXItc3BhY2luZz0iLTMuNDIiIGZpbGw9IiMxRjJDNDQiPmFuZHk8L3RleHQ+PGNpcmNsZSBjeD0iMTc3IiBjeT0iMjkiIHI9IjcuNSIgZmlsbD0iIzg2NEMyNCI+PC9jaXJjbGU+PHRleHQgeD0iMTg4IiB5PSIyNS41IiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiM1MTA5MUIiPlVHQzwvdGV4dD48dGV4dCB4PSIxODgiIHk9IjQyIiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiM1MTA5MUIiPkNSRUFUT1I8L3RleHQ+PC9zdmc+" download="andy-blanco.svg" class="dlbtn" style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#1F2C44;color:#FFFFFF;border-radius:999px;padding:8px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px">&#8595; Descargar SVG</a>
       </div>
       <div style="background:#51091B;border-radius:16px;padding:28px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:22px;border:1px solid rgba(1,0,1,.06)">
         <svg xmlns="http://www.w3.org/2000/svg" width="180" height="53.4" viewBox="0 0 256 76" fill="none"><text x="0" y="58" font-family="Archivo, Helvetica, Arial, sans-serif" font-weight="700" font-size="76" letter-spacing="-3.42" fill="#E9E2D0">andy</text><circle cx="177" cy="29" r="7.5" fill="#864C24"></circle><text x="188" y="25.5" font-family="DM Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.84" fill="#E9E2D0">UGC</text><text x="188" y="42" font-family="DM Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.84" fill="#E9E2D0">CREATOR</text></svg>
@@ -1017,7 +1057,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
           <div><b>Punto</b> &nbsp;Cuero #864C24</div>
           <div><b>UGC Creator</b> &nbsp;Eggshell #E9E2D0</div>
         </div>
-        <a href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iNzYuMCIgdmlld0JveD0iMCAwIDI1NiA3NiIgZmlsbD0ibm9uZSI+PHRleHQgeD0iMCIgeT0iNTgiIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9Ijc2IiBsZXR0ZXItc3BhY2luZz0iLTMuNDIiIGZpbGw9IiNFOUUyRDAiPmFuZHk8L3RleHQ+PGNpcmNsZSBjeD0iMTc3IiBjeT0iMjkiIHI9IjcuNSIgZmlsbD0iIzg2NEMyNCI+PC9jaXJjbGU+PHRleHQgeD0iMTg4IiB5PSIyNS41IiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiNFOUUyRDAiPlVHQzwvdGV4dD48dGV4dCB4PSIxODgiIHk9IjQyIiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiNFOUUyRDAiPkNSRUFUT1I8L3RleHQ+PC9zdmc+" download="andy-bordo.svg" style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#E9E2D0;color:#51091B;border-radius:999px;padding:8px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px">&#8595; Descargar SVG</a>
+        <a href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iNzYuMCIgdmlld0JveD0iMCAwIDI1NiA3NiIgZmlsbD0ibm9uZSI+PHRleHQgeD0iMCIgeT0iNTgiIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9Ijc2IiBsZXR0ZXItc3BhY2luZz0iLTMuNDIiIGZpbGw9IiNFOUUyRDAiPmFuZHk8L3RleHQ+PGNpcmNsZSBjeD0iMTc3IiBjeT0iMjkiIHI9IjcuNSIgZmlsbD0iIzg2NEMyNCI+PC9jaXJjbGU+PHRleHQgeD0iMTg4IiB5PSIyNS41IiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiNFOUUyRDAiPlVHQzwvdGV4dD48dGV4dCB4PSIxODgiIHk9IjQyIiBmb250LWZhbWlseT0iRE0gTW9ubywgdWktbW9ub3NwYWNlLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEuNSIgbGV0dGVyLXNwYWNpbmc9IjEuODQiIGZpbGw9IiNFOUUyRDAiPkNSRUFUT1I8L3RleHQ+PC9zdmc+" download="andy-bordo.svg" class="dlbtn" style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#E9E2D0;color:#51091B;border-radius:999px;padding:8px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px">&#8595; Descargar SVG</a>
       </div>
     </div>
   </div>
@@ -1056,7 +1096,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
       .fbtn{font-family:var(--body);font-weight:700;font-size:12.5px;border-radius:999px;padding:10px 14px;border:1px solid rgba(1,0,1,.1);cursor:pointer}
       .fbtn-primary{background:var(--grey);color:var(--cream);border-color:var(--grey)}
       .fbtn-ghost{background:var(--cream);color:var(--black)}
-      #firma-stage{background:#fff;border-radius:16px;border:1px solid rgba(1,0,1,.08);padding:20px;min-width:0;position:sticky;top:73px;z-index:5;margin-bottom:20px}
+      #firma-stage{background:#fff;border-radius:16px;border:1px solid rgba(1,0,1,.08);padding:20px;min-width:0;margin-bottom:20px}
       #firma-frame{border-radius:12px;padding:36px 24px;min-height:140px;display:flex;align-items:center;transition:background .2s;overflow-x:auto}
       #firma-note{margin-top:14px;font-size:11.5px;color:#8a8375;line-height:1.6}
       #firma-code{margin-top:14px}
