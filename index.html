@@ -1028,7 +1028,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
   <div class="wrap">
     <div class="eyebrow">11 · Firma</div>
     <h2>Tu firma de correo, editable.</h2>
-    <p class="lead">Elegí una combinación aprobada o tocá cada color por separado, mirá el resultado en tamaño real y copiala o descargala lista para usar.</p>
+    <p class="lead">Elegí una combinación aprobada o tocá cada color por separado — solo con los siete colores de esta paleta, ninguno fuera de ella — mirá el resultado en tamaño real y copiala o descargala lista para usar.</p>
 
     <style>
       #firma-app{display:grid;grid-template-columns:320px 1fr;gap:16px;margin-top:34px;align-items:start}
@@ -1042,11 +1042,13 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
       .fpreset:hover{border-color:var(--peri)}
       .fpreset .chip{width:24px;height:24px;border-radius:50%;border:1px solid rgba(1,0,1,.12)}
       .fpreset span{font-size:10.5px;font-weight:700;color:var(--black)}
-      .ffield{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid rgba(1,0,1,.07)}
+      .ffield{display:flex;flex-direction:column;gap:7px;padding:8px 0;border-bottom:1px solid rgba(1,0,1,.07)}
       .ffield:last-child{border-bottom:none}
       .ffield label{font-size:12px;color:var(--black)}
       .ffield label small{display:block;font-size:10px;color:#8a8375;font-weight:500}
-      .ffield input[type=color]{width:30px;height:30px;padding:0;border:1px solid rgba(1,0,1,.1);border-radius:7px;cursor:pointer;background:none}
+      .swrow{display:flex;gap:6px;flex-wrap:wrap}
+      .swdot{width:22px;height:22px;border-radius:50%;border:1px solid rgba(1,0,1,.15);cursor:pointer;padding:0}
+      .swdot.on{outline:2px solid var(--black);outline-offset:2px}
       #firma-bgtoggle{display:flex;gap:8px}
       #firma-bgtoggle button{flex:1;height:30px;border-radius:8px;border:1px solid rgba(1,0,1,.1);cursor:pointer}
       #firma-bgtoggle button.on{outline:2px solid var(--peri);outline-offset:2px}
@@ -1080,16 +1082,16 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
         <div class="fcard">
           <h3>Logo (esquina superior)</h3>
           <p class="sub">El isotipo "andy" chico, junto al nombre</p>
-          <div class="ffield"><label>Texto "andy"<small>Palabra principal</small></label><input type="color" id="firma-inkMini"></div>
-          <div class="ffield"><label>Punto<small>Entre el logo y "UGC"</small></label><input type="color" id="firma-dotMini"></div>
-          <div class="ffield"><label>UGC Creator<small>Etiqueta chica</small></label><input type="color" id="firma-capMini"></div>
+          <div class="ffield"><label>Texto "andy"<small>Palabra principal</small></label><div class="swrow" id="firma-inkMini"></div></div>
+          <div class="ffield"><label>Punto<small>Entre el logo y "UGC"</small></label><div class="swrow" id="firma-dotMini"></div></div>
+          <div class="ffield"><label>UGC Creator<small>Etiqueta chica</small></label><div class="swrow" id="firma-capMini"></div></div>
         </div>
         <div class="fcard">
           <h3>Nombre y contacto</h3>
-          <div class="ffield"><label>Andreina Luna<small>Nombre</small></label><input type="color" id="firma-nameColor"></div>
-          <div class="ffield"><label>UGC Creator<small>Debajo del nombre</small></label><input type="color" id="firma-roleColor"></div>
-          <div class="ffield"><label>Enlaces<small>Portfolio, WhatsApp, @usuario</small></label><input type="color" id="firma-linkColor"></div>
-          <div class="ffield"><label>Líneas y puntos<small>Separadores suaves</small></label><input type="color" id="firma-lineColor"></div>
+          <div class="ffield"><label>Andreina Luna<small>Nombre</small></label><div class="swrow" id="firma-nameColor"></div></div>
+          <div class="ffield"><label>UGC Creator<small>Debajo del nombre</small></label><div class="swrow" id="firma-roleColor"></div></div>
+          <div class="ffield"><label>Enlaces<small>Portfolio, WhatsApp, @usuario</small></label><div class="swrow" id="firma-linkColor"></div></div>
+          <div class="ffield"><label>Líneas y puntos<small>Separadores suaves</small></label><div class="swrow" id="firma-lineColor"></div></div>
         </div>
         <div class="fcard">
           <h3>Fondo de la vista previa</h3>
@@ -1157,9 +1159,19 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
 </table>`;
   };
   var PRESETS = [
-    {name:'Índigo', bg:'#1F2C44', inkMini:'#E9E2D0', dotMini:'#864C24', capMini:'#E9E2D0', nameColor:'#E9E2D0', roleColor:'#E9E2D0', linkColor:'#E9E2D0', lineColor:'#4A5975'},
-    {name:'Blanco', bg:'#FFFFFF', inkMini:'#1F2C44', dotMini:'#864C24', capMini:'#51091B', nameColor:'#1F2C44', roleColor:'#51091B', linkColor:'#1F2C44', lineColor:'#D8CFC0'},
-    {name:'Bordó',  bg:'#51091B', inkMini:'#E9E2D0', dotMini:'#864C24', capMini:'#E9E2D0', nameColor:'#E9E2D0', roleColor:'#E9E2D0', linkColor:'#E9E2D0', lineColor:'#7A3346'}
+    {name:'Índigo', bg:'#1F2C44', inkMini:'#E9E2D0', dotMini:'#864C24', capMini:'#E9E2D0', nameColor:'#E9E2D0', roleColor:'#E9E2D0', linkColor:'#E9E2D0', lineColor:'#864C24'},
+    {name:'Blanco', bg:'#FFFFFF', inkMini:'#1F2C44', dotMini:'#864C24', capMini:'#51091B', nameColor:'#1F2C44', roleColor:'#51091B', linkColor:'#1F2C44', lineColor:'#864C24'},
+    {name:'Bordó',  bg:'#51091B', inkMini:'#E9E2D0', dotMini:'#864C24', capMini:'#E9E2D0', nameColor:'#E9E2D0', roleColor:'#E9E2D0', linkColor:'#E9E2D0', lineColor:'#864C24'}
+  ];
+  // Los unicos colores con los que se puede jugar: los siete de la paleta de este sistema.
+  var PALETTE = [
+    {hex:'#E9E2D0', name:'Eggshell'},
+    {hex:'#864C24', name:'Cuero'},
+    {hex:'#8F3F23', name:'Terracota'},
+    {hex:'#61603A', name:'Oliva'},
+    {hex:'#2A2620', name:'Tinta'},
+    {hex:'#51091B', name:'Bordó'},
+    {hex:'#1F2C44', name:'Índigo'}
   ];
   var FIELDS = ['inkMini','dotMini','capMini','nameColor','roleColor','linkColor','lineColor'];
   var state = Object.assign({}, PRESETS[1]);
@@ -1182,7 +1194,33 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
       wrap.appendChild(b);
     });
   }
-  function syncInputs(){ FIELDS.forEach(function(f){ $('firma-' + f).value = state[f]; }); }
+  function renderPaletteFields(){
+    FIELDS.forEach(function(f){
+      var wrap = $('firma-' + f);
+      wrap.innerHTML = '';
+      PALETTE.forEach(function(p){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'swdot';
+        b.title = p.name;
+        b.style.background = p.hex;
+        b.dataset.hex = p.hex;
+        b.addEventListener('click', function(){
+          state[f] = p.hex;
+          syncInputs();
+          render();
+        });
+        wrap.appendChild(b);
+      });
+    });
+  }
+  function syncInputs(){
+    FIELDS.forEach(function(f){
+      document.querySelectorAll('#firma-' + f + ' .swdot').forEach(function(b){
+        b.classList.toggle('on', b.dataset.hex.toLowerCase() === state[f].toLowerCase());
+      });
+    });
+  }
   function setStageBg(hex){
     $('firma-frame').style.background = hex;
     document.querySelectorAll('#firma-bgtoggle button').forEach(function(b){
@@ -1197,9 +1235,6 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
     $('firma-preview').innerHTML = htmlStr;
     $('firma-codePreview').textContent = fullDocument(htmlStr);
   }
-  FIELDS.forEach(function(f){
-    $('firma-' + f).addEventListener('input', function(e){ state[f] = e.target.value; render(); });
-  });
   document.querySelectorAll('#firma-bgtoggle button').forEach(function(b){
     b.addEventListener('click', function(){ setStageBg(b.dataset.bg); });
   });
@@ -1254,6 +1289,7 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
   });
 
   renderPresets();
+  renderPaletteFields();
   syncInputs();
   setStageBg(state.bg);
   render();
