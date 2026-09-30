@@ -1066,6 +1066,10 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
       #firma-code{margin-top:14px}
       #firma-code summary{font-size:11px;font-weight:700;color:var(--apri);cursor:pointer;letter-spacing:.06em;text-transform:uppercase}
       #firma-code pre{margin-top:8px;max-height:200px;overflow:auto;background:var(--cream);border-radius:10px;padding:12px;font-size:10px;line-height:1.5;font-family:'DM Mono',ui-monospace,monospace;white-space:pre-wrap;word-break:break-all}
+      #firma-actions2{margin-top:18px;padding-top:16px;border-top:1px solid rgba(1,0,1,.08);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+      #firma-actions2 .fbtn{width:auto;flex:1 1 170px;margin-bottom:0}
+      #firma-actions2 #firma-status2{flex-basis:100%;font-size:11px;color:#8a8375;min-height:14px}
+      #firma-actions2 #firma-status2.ok{color:#3b6b3f}
       /* neutralizar los estilos globales table/td/th de la pagina (pensados para las tablas
          ilustrativas de "Esquinas y resaltados") dentro de la firma, que es HTML de email real */
       #firma-preview table{border-collapse:collapse;border-spacing:0;min-width:0;width:auto}
@@ -1114,6 +1118,12 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
         <div id="firma-frame"><div id="firma-preview"></div></div>
         <p id="firma-note"><b>Cómo usarla:</b> en Gmail, andá a Configuración → Ver todos los ajustes → Firma, creá una firma nueva y pegá con "Copiar para pegar en Gmail". Si tu cliente de correo pide un archivo, usá "Descargar HTML" e importalo desde ahí.</p>
         <details id="firma-code"><summary>Ver el código</summary><pre id="firma-codePreview"></pre></details>
+        <div id="firma-actions2">
+          <button class="fbtn fbtn-primary" id="firma-btnDownload2">Descargar HTML</button>
+          <button class="fbtn fbtn-ghost" id="firma-btnCopyRich2">Copiar para pegar en Gmail</button>
+          <button class="fbtn fbtn-ghost" id="firma-btnCopyCode2">Copiar código HTML</button>
+          <div id="firma-status2"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1239,11 +1249,18 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
     b.addEventListener('click', function(){ setStageBg(b.dataset.bg); });
   });
   function setStatus(msg, ok){
-    var el = $('firma-status');
-    el.textContent = msg;
-    el.className = ok ? 'ok' : '';
+    ['firma-status', 'firma-status2'].forEach(function(id){
+      var el = $(id);
+      if (!el) return;
+      el.textContent = msg;
+      el.className = ok ? 'ok' : '';
+    });
   }
-  $('firma-btnDownload').addEventListener('click', function(){
+  function bindAll(id, fn){
+    var el = $(id);
+    if (el) el.addEventListener('click', fn);
+  }
+  function doDownload(){
     var htmlStr = fullDocument(buildSignatureHTML(state));
     var blob = new Blob([htmlStr], {type:'text/html'});
     var url = URL.createObjectURL(blob);
@@ -1252,8 +1269,8 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
     setStatus('Firma descargada.', true);
-  });
-  $('firma-btnCopyCode').addEventListener('click', function(){
+  }
+  function doCopyCode(){
     var htmlStr = fullDocument(buildSignatureHTML(state));
     navigator.clipboard.writeText(htmlStr).then(function(){
       setStatus('Código HTML copiado.', true);
@@ -1265,8 +1282,8 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
       catch(e){ setStatus('No se pudo copiar. Abrí "Ver el código" y copiá a mano.', false); }
       sel.removeAllRanges();
     });
-  });
-  $('firma-btnCopyRich').addEventListener('click', function(){
+  }
+  function doCopyRich(){
     var htmlStr = buildSignatureHTML(state);
     var doCopy = function(){
       var node = $('firma-preview');
@@ -1286,7 +1303,13 @@ footer{padding:40px 0 60px;font-size:13px;color:var(--grey)}
         setStatus('Firma copiada. Pegala en el editor de firma de Gmail.', true);
       }, doCopy);
     } else { doCopy(); }
-  });
+  }
+  bindAll('firma-btnDownload', doDownload);
+  bindAll('firma-btnDownload2', doDownload);
+  bindAll('firma-btnCopyCode', doCopyCode);
+  bindAll('firma-btnCopyCode2', doCopyCode);
+  bindAll('firma-btnCopyRich', doCopyRich);
+  bindAll('firma-btnCopyRich2', doCopyRich);
 
   renderPresets();
   renderPaletteFields();
